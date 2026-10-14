@@ -705,10 +705,11 @@ body.lock{overflow:hidden}
     gap: 16px;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .shop-slider-track {
-    grid-auto-columns: calc(85% - 10px);
-    gap: 14px;
+    grid-template-rows: 1fr;
+    grid-auto-columns: calc(50% - 6px);
+    gap: 12px;
   }
 }
 
@@ -1754,43 +1755,64 @@ body.lock{overflow:hidden}
     font-size: 0.92rem;
   }
 
-  /* --- 4. PROFESSIONS HORIZONTAL PINNED SECTION --- */
+  /* --- 4. PROFESSIONS SECTION (REDUCED SPACE & TOUCH CAROUSEL ON MOBILE) --- */
   .hs-wrap {
-    height: 280vh;
+    height: auto !important;
+    padding: 3.2rem 0 3.6rem !important;
   }
   .hs-stick {
-    padding-top: 4.5rem;
-    gap: 1.2rem;
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    gap: 1.2rem !important;
+    overflow: visible !important;
   }
   .hs-head .sec-title {
     font-size: clamp(1.85rem, 6.5vw, 2.4rem);
     margin: 0.3rem 0 0;
   }
+  .hs-track {
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    padding: 0.4rem 1.15rem 1rem !important;
+    gap: 1rem !important;
+    transform: none !important;
+  }
+  .hs-track::-webkit-scrollbar {
+    display: none !important;
+  }
   .hc {
-    flex: 0 0 78vw;
-    min-width: 250px;
-    max-width: 300px;
-    height: 310px;
-    padding: 1.4rem;
-    border-radius: 24px;
+    scroll-snap-align: center !important;
+    flex: 0 0 76vw !important;
+    min-width: 250px !important;
+    max-width: 290px !important;
+    height: 295px !important;
+    padding: 1.35rem !important;
+    border-radius: 24px !important;
+    transform: none !important;
+    filter: none !important;
   }
   .hc .ico {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     border-radius: 14px;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
   .hc h3 {
-    font-size: 1.75rem;
-    margin: 0 0 0.6rem;
+    font-size: 1.7rem;
+    margin: 0 0 0.5rem;
   }
   .hc .go {
     font-size: 0.84rem;
   }
   .hc .n {
-    font-size: 6.5rem;
+    font-size: 6rem;
     right: 0.8rem;
-    bottom: -1rem;
+    bottom: -0.9rem;
   }
 
   /* --- 5. SPOTLIGHT SECTION --- */
@@ -1957,70 +1979,139 @@ body.lock{overflow:hidden}
   }
 }
 
-/* Specific micro-optimizations for 576px and below */
-@media (max-width: 576px) {
+/* Specific micro-optimizations for 768px and below (1 ROW, 2 BOXES VISIBLE, SLIDE 2 BY 2) */
+@media (max-width: 768px) {
   .shop-slider-track {
-    grid-auto-columns: calc(84% - 8px);
-    gap: 14px;
-    padding: 8px 2px 18px;
+    grid-template-rows: 1fr !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: calc(50% - 6px) !important;
+    gap: 12px !important;
+    padding: 8px 2px 18px !important;
+    scroll-snap-type: x mandatory !important;
+  }
+  .slide-card-wrap {
+    width: 100% !important;
+  }
+  .slide-card-wrap:nth-child(odd) {
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal !important;
+  }
+  .slide-card-wrap:nth-child(even) {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
   }
   .shop-sec .pc {
-    border-radius: 18px;
+    border-radius: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .shop-sec .pv {
-    height: 155px;
+    height: 125px;
   }
   .pv-chip-pill {
-    bottom: 8px;
-    left: 8px;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.5rem;
+    bottom: 6px;
+    left: 6px;
+    font-size: 0.52rem;
+    padding: 0.12rem 0.4rem;
+    gap: 0.2rem;
+  }
+  .pv-chip-pill svg {
+    width: 10px;
+    height: 10px;
   }
   .off {
-    top: 10px;
-    left: 10px;
-    font-size: 0.62rem;
-    padding: 0.2rem 0.5rem;
+    top: 6px;
+    left: 6px;
+    font-size: 0.55rem;
+    padding: 0.12rem 0.45rem;
+    font-weight: 700;
   }
   .wt {
-    top: 10px;
-    right: 10px;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.5rem;
-  }
-  .shop-sec .pb {
-    padding: 1rem 1rem 1.15rem;
-  }
-  .shop-sec .pc-title {
-    font-size: 0.92rem;
-    line-height: 1.32;
-    min-height: 2.6em;
-    margin-bottom: 0.35rem;
-  }
-  .pc-feature-chip {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .shop-sec .price b {
-    font-size: 1.45rem;
-  }
-  .shop-sec .price s {
-    font-size: 0.8rem;
-  }
-  .shop-sec .save {
-    font-size: 0.68rem;
+    top: 6px;
+    right: 6px;
+    font-size: 0.55rem;
     padding: 0.12rem 0.45rem;
   }
+  .shop-sec .pb {
+    padding: 0.75rem 0.65rem 0.85rem !important;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .pc-meta-top {
+    margin-bottom: 0.25rem;
+  }
+  .pc-meta-top .tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+  }
+  .pc-rating {
+    font-size: 0.68rem;
+    gap: 0.15rem;
+  }
+  .pc-rating .cnt-rev {
+    display: none;
+  }
+  .shop-sec .pc-title {
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
+    min-height: 2.5em !important;
+    margin-bottom: 0.3rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .pc-feature-chip {
+    font-size: 0.6rem !important;
+    padding: 0.12rem 0.35rem !important;
+    margin-bottom: 0.4rem !important;
+    gap: 0.2rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+  .pc-feature-chip svg {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+  .price-wrap {
+    margin-bottom: 0.45rem;
+    gap: 0.2rem;
+  }
+  .shop-sec .price b {
+    font-size: 1.15rem !important;
+  }
+  .shop-sec .price s {
+    font-size: 0.72rem !important;
+  }
+  .shop-sec .save {
+    font-size: 0.58rem !important;
+    padding: 0.1rem 0.35rem !important;
+  }
+  .pc-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem !important;
+    margin-top: auto;
+  }
   .btn-quick-view {
-    padding: 0.55rem 0.75rem;
-    font-size: 0.8rem;
-    border-radius: 10px;
+    padding: 0.42rem 0.5rem !important;
+    font-size: 0.7rem !important;
+    border-radius: 9px !important;
   }
   .shop-sec .add {
-    padding: 0.55rem 0.85rem;
-    font-size: 0.84rem;
-    border-radius: 10px;
+    padding: 0.42rem 0.55rem !important;
+    font-size: 0.72rem !important;
+    border-radius: 9px !important;
+    gap: 0.2rem !important;
+  }
+  .shop-sec .add svg {
+    width: 11px;
+    height: 11px;
   }
   .testimonials-sec .d-flex.align-items-center.justify-content-between {
     flex-direction: column;
@@ -2080,6 +2171,30 @@ body.lock{overflow:hidden}
     justify-content: center;
     width: 100%;
     display: flex;
+  }
+  .shop-slider-track {
+    grid-auto-columns: calc(50% - 5px) !important;
+    gap: 10px !important;
+  }
+  .shop-sec .pv {
+    height: 110px !important;
+  }
+  .shop-sec .pb {
+    padding: 0.65rem 0.5rem 0.75rem !important;
+  }
+  .shop-sec .pc-title {
+    font-size: 0.78rem !important;
+  }
+  .shop-sec .price b {
+    font-size: 1.05rem !important;
+  }
+  .btn-quick-view {
+    padding: 0.35rem 0.45rem !important;
+    font-size: 0.65rem !important;
+  }
+  .shop-sec .add {
+    padding: 0.35rem 0.45rem !important;
+    font-size: 0.68rem !important;
   }
 }
 
